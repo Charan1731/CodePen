@@ -9,6 +9,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
     const { login } = useAuth();
     const navigate = useNavigate();
 
@@ -17,15 +18,18 @@ const Login = () => {
         if (token) {
             navigate('/');
         }
-    }, []);
+    }, [navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
+        setError('');
+        
         try {
             const res = await axios.post('http://localhost:8080/api/login', { email, password });
             login(res.data);
         } catch (error) {
+            setError('Invalid email or password. Please try again.');
             console.error('Login failed:', error);
         } finally {
             setIsLoading(false);
@@ -33,10 +37,11 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen pt-24 flex items-center justify-center px-4">
+        <div className="min-h-screen pt-32 flex items-center justify-center px-6">
+            {/* Subtle Background Elements */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-20 left-20 w-32 h-32 bg-white/5 rounded-full blur-3xl animate-float" />
-                <div className="absolute bottom-20 right-20 w-40 h-40 bg-white/3 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                <div className="absolute top-32 left-32 w-32 h-32 bg-neutral-200/30 rounded-full blur-3xl animate-float" />
+                <div className="absolute bottom-32 right-32 w-40 h-40 bg-neutral-100/40 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
             </div>
 
             <motion.div
@@ -45,21 +50,20 @@ const Login = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
             >
-                <div className="glass-card p-8">
-                    <div className="text-center mb-8">
+                <div className="glass-card p-10">
+                    <div className="text-center mb-10">
                         <motion.div
-                            initial={{ scale: 0.8, opacity: 0 }}
+                            initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
                         >
-                            <h2 className="text-3xl font-bold text-white mb-2">
+                            <h2 className="text-3xl font-bold text-neutral-900 mb-3">
                                 Welcome Back
                             </h2>
-                            <p className="text-neutral-400">Sign in to your account</p>
+                            <p className="text-neutral-600">Sign in to continue building</p>
                         </motion.div>
                     </div>
 
-                    {/* Form */}
                     <motion.form
                         onSubmit={handleSubmit}
                         className="space-y-6"
@@ -67,8 +71,18 @@ const Login = () => {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                        <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-2">
+                        {error && (
+                            <motion.div
+                                className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm"
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                            >
+                                {error}
+                            </motion.div>
+                        )}
+
+                        <div className="form-group">
+                            <label className="form-label">
                                 Email Address
                             </label>
                             <input
@@ -76,13 +90,13 @@ const Login = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Enter your email"
-                                className="input-futuristic w-full"
+                                className="input-futuristic w-full focus-ring"
                                 required
                             />
                         </div>
 
-                        <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-2">
+                        <div className="form-group">
+                            <label className="form-label">
                                 Password
                             </label>
                             <input
@@ -90,7 +104,7 @@ const Login = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Enter your password"
-                                className="input-futuristic w-full"
+                                className="input-futuristic w-full focus-ring"
                                 required
                             />
                         </div>
@@ -103,7 +117,7 @@ const Login = () => {
                         >
                             {isLoading ? (
                                 <div className="flex items-center justify-center">
-                                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                                    <div className="loading-spinner mr-3" />
                                     Signing In...
                                 </div>
                             ) : (
@@ -112,18 +126,17 @@ const Login = () => {
                         </motion.button>
                     </motion.form>
 
-                    {/* Footer */}
                     <motion.div
                         className="mt-8 text-center"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
                     >
-                        <p className="text-neutral-400">
+                        <p className="text-neutral-600">
                             Don't have an account?{' '}
                             <Link
                                 to="/signup"
-                                className="text-white hover:text-neutral-200 font-medium transition-colors duration-300"
+                                className="text-neutral-900 hover:text-neutral-700 font-medium transition-colors duration-300 underline underline-offset-4"
                             >
                                 Create one
                             </Link>

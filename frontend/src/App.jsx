@@ -10,7 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
-    <div className="min-h-screen bg-neutral-950 text-white">
+    <div className="min-h-screen bg-neutral-50 text-neutral-900">
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />

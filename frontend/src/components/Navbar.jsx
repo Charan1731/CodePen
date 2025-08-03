@@ -1,47 +1,56 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
+const CodeLab = () => (
+  <div className="flex items-center space-x-2">
+    <div className="w-8 h-8 bg-neutral-900 rounded-lg flex items-center justify-center">
+      <span className="text-white text-sm font-bold">&lt;/&gt;</span>
+    </div>
+    <span className="text-xl font-bold text-neutral-900">CodeLab</span>
+  </div>
+);
+
 const Navbar = () => {
     const { user, logout } = useAuth();
 
     return (
-        <nav className="fixed top-4 left-4 right-4 z-50 glass-card px-6 py-4 mx-auto max-w-6xl animate-slide-up">
+        <nav className="fixed top-6 left-6 right-6 z-50 glass-card px-6 py-4 mx-auto max-w-6xl animate-slide-up">
             <div className="flex justify-between items-center">
                 <Link 
                     to='/' 
-                    className="text-2xl font-bold text-white hover:text-neutral-200 transition-all hover:scale-105 hover:rotate-3 duration-300"
+                    className="transition-all hover:scale-105 duration-300"
                 >
-                    &lt;CodeLab/&gt;
+                    <CodeLab/>
                 </Link>
                 <div className="flex items-center space-x-6">
                     {user ? (
                         <>
-                            <div className="flex items-center space-x-1 text-green-500">
-                                <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse"></div>
+                            <div className="status-online">
+                                <div className="status-dot"></div>
                                 <span className="text-sm font-medium">{user.username}</span>
                             </div>
                             
                             <Link 
                                 to='/dashboard' 
-                                className="nav-link font-medium"
+                                className="nav-link"
                             >
                                 Dashboard
                             </Link>
                             
                             <button 
                                 onClick={logout}
-                                className="bg-red-500/20 hover:bg-red-500/30 border border-red-500/30 hover:border-red-500/50 text-red-300 hover:text-red-200 px-4 py-2 rounded-lg font-medium transition-all hover:scale-105 hover:rotate-3 duration-300 backdrop-blur-sm"
+                                className="btn-danger"
                             >
-                                Logout
+                                Sign Out
                             </button>
                         </>
                     ) : (
                         <>
                             <Link 
                                 to='/login' 
-                                className="nav-link font-medium"
+                                className="nav-link"
                             >
-                                Login
+                                Sign In
                             </Link>
                             
                             <Link 
