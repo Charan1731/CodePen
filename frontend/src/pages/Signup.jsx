@@ -31,10 +31,11 @@ const Signup = () => {
 
     return (
         <div className="min-h-screen pt-32 flex items-center justify-center px-6">
-            {/* Subtle Background Elements */}
+            {/* Dark Background Elements */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-40 right-40 w-36 h-36 bg-neutral-200/25 rounded-full blur-3xl animate-float" />
-                <div className="absolute bottom-40 left-40 w-28 h-28 bg-neutral-100/35 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
+                <div className="absolute top-40 right-40 w-44 h-44 bg-neutral-700/8 rounded-full blur-3xl animate-float" />
+                <div className="absolute bottom-40 left-40 w-36 h-36 bg-neutral-600/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
+                <div className="absolute top-1/3 right-1/4 w-28 h-28 bg-neutral-500/6 rounded-full blur-2xl animate-float" style={{ animationDelay: '3s' }} />
             </div>
 
             <motion.div
@@ -50,10 +51,10 @@ const Signup = () => {
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
                         >
-                            <h2 className="text-3xl font-bold text-neutral-900 mb-3">
+                            <h2 className="text-3xl font-bold text-neutral-100 mb-3">
                                 Join CodeLab
                             </h2>
-                            <p className="text-neutral-600">Create your account and start building</p>
+                            <p className="text-neutral-400">Create your account and start building</p>
                         </motion.div>
                     </div>
 
@@ -66,7 +67,7 @@ const Signup = () => {
                     >
                         {error && (
                             <motion.div
-                                className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm"
+                                className="bg-red-900/30 border border-red-800/50 text-red-300 px-4 py-3 rounded-xl text-sm"
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
                             >
@@ -139,11 +140,11 @@ const Signup = () => {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
                     >
-                        <p className="text-neutral-600">
+                        <p className="text-neutral-400">
                             Already have an account?{' '}
                             <Link
                                 to="/login"
-                                className="text-neutral-900 hover:text-neutral-700 font-medium transition-colors duration-300 underline underline-offset-4"
+                                className="text-neutral-100 hover:text-neutral-300 font-medium transition-colors duration-300 underline underline-offset-4"
                             >
                                 Sign in
                             </Link>

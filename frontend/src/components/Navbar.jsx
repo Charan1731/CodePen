@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const CodeLab = () => (
-  <div className="flex items-center space-x-2">
-    <div className="w-8 h-8 bg-neutral-900 rounded-lg flex items-center justify-center">
-      <span className="text-white text-sm font-bold">&lt;/&gt;</span>
+  <div className="flex items-center space-x-3">
+    <div className="w-8 h-8 bg-gradient-to-br from-neutral-100 to-neutral-300 rounded-lg flex items-center justify-center shadow-lg">
+      <div className="w-4 h-4 bg-neutral-900 rounded-sm flex items-center justify-center">
+        <div className="w-2 h-2 bg-neutral-100 rounded-xs"></div>
+      </div>
     </div>
-    <span className="text-xl font-bold text-neutral-900">CodeLab</span>
+    <span className="text-xl font-bold text-neutral-100 tracking-tight">CodeLab</span>
   </div>
 );
 

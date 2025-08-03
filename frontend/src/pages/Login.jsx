@@ -38,10 +38,11 @@ const Login = () => {
 
     return (
         <div className="min-h-screen pt-32 flex items-center justify-center px-6">
-            {/* Subtle Background Elements */}
+            {/* Dark Background Elements */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-32 left-32 w-32 h-32 bg-neutral-200/30 rounded-full blur-3xl animate-float" />
-                <div className="absolute bottom-32 right-32 w-40 h-40 bg-neutral-100/40 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                <div className="absolute top-32 left-32 w-40 h-40 bg-neutral-700/10 rounded-full blur-3xl animate-float" />
+                <div className="absolute bottom-32 right-32 w-48 h-48 bg-neutral-600/8 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                <div className="absolute top-1/2 left-1/4 w-32 h-32 bg-neutral-500/5 rounded-full blur-2xl animate-float" style={{ animationDelay: '4s' }} />
             </div>
 
             <motion.div
@@ -57,10 +58,10 @@ const Login = () => {
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
                         >
-                            <h2 className="text-3xl font-bold text-neutral-900 mb-3">
+                            <h2 className="text-3xl font-bold text-neutral-100 mb-3">
                                 Welcome Back
                             </h2>
-                            <p className="text-neutral-600">Sign in to continue building</p>
+                            <p className="text-neutral-400">Sign in to continue building</p>
                         </motion.div>
                     </div>
 
@@ -73,7 +74,7 @@ const Login = () => {
                     >
                         {error && (
                             <motion.div
-                                className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm"
+                                className="bg-red-900/30 border border-red-800/50 text-red-300 px-4 py-3 rounded-xl text-sm"
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
                             >
@@ -132,11 +133,11 @@ const Login = () => {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
                     >
-                        <p className="text-neutral-600">
+                        <p className="text-neutral-400">
                             Don't have an account?{' '}
                             <Link
                                 to="/signup"
-                                className="text-neutral-900 hover:text-neutral-700 font-medium transition-colors duration-300 underline underline-offset-4"
+                                className="text-neutral-100 hover:text-neutral-300 font-medium transition-colors duration-300 underline underline-offset-4"
                             >
                                 Create one
                             </Link>

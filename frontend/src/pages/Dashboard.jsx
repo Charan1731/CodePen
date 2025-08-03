@@ -53,11 +53,11 @@ const Dashboard = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h1 className="text-5xl md:text-6xl font-bold mb-6 text-neutral-900 text-balance">
+                    <h1 className="text-5xl md:text-6xl font-bold mb-6 text-neutral-100 text-balance">
                         Your Projects
                     </h1>
-                    <p className="text-neutral-600 text-xl leading-relaxed">
-                        Create, edit, and manage your code projects
+                    <p className="text-neutral-400 text-xl leading-relaxed">
+                        Create, edit, and manage your code projects in the dark
                     </p>
                 </motion.div>
 
@@ -67,7 +67,7 @@ const Dashboard = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                    <h3 className="text-2xl font-semibold mb-6 text-neutral-900">Create New Project</h3>
+                    <h3 className="text-2xl font-semibold mb-6 text-neutral-100">Create New Project</h3>
                     <div className="flex flex-col sm:flex-row gap-4">
                         <input
                             type="text"
@@ -115,13 +115,13 @@ const Dashboard = () => {
                                 whileHover={{ scale: 1.02 }}
                                 onClick={() => navigate(`/editor/${project._id}`)}
                             >
-                                <div className="w-14 h-14 bg-neutral-200 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-neutral-300 transition-colors duration-300">
-                                    <span className="text-neutral-700 text-xl font-bold">
+                                <div className="w-14 h-14 bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-2xl flex items-center justify-center mb-6 group-hover:from-neutral-600 group-hover:to-neutral-700 transition-all duration-300 shadow-lg">
+                                    <span className="text-neutral-200 text-xl font-bold">
                                         {project.name.charAt(0).toUpperCase()}
                                     </span>
                                 </div>
 
-                                <h3 className="text-xl font-semibold text-neutral-900 mb-3 group-hover:text-neutral-700 transition-colors duration-300">
+                                <h3 className="text-xl font-semibold text-neutral-100 mb-3 group-hover:text-neutral-200 transition-colors duration-300">
                                     {project.name}
                                 </h3>
                                 
@@ -134,19 +134,23 @@ const Dashboard = () => {
                                 </div>
 
                                 <div className="flex flex-wrap gap-2 mb-6">
-                                    {['HTML', 'CSS', 'JS'].map((tech) => (
+                                    {[
+                                        { name: 'HTML', color: 'bg-orange-900/30 text-orange-300 border-orange-800/50' },
+                                        { name: 'CSS', color: 'bg-blue-900/30 text-blue-300 border-blue-800/50' },
+                                        { name: 'JS', color: 'bg-yellow-900/30 text-yellow-300 border-yellow-800/50' }
+                                    ].map((tech) => (
                                         <span 
-                                            key={tech}
-                                            className="px-3 py-1 bg-neutral-100 text-xs rounded-lg text-neutral-600 font-medium"
+                                            key={tech.name}
+                                            className={`px-3 py-1 text-xs rounded-lg font-medium border ${tech.color}`}
                                         >
-                                            {tech}
+                                            {tech.name}
                                         </span>
                                     ))}
                                 </div>
 
-                                <div className="flex items-center justify-between mt-auto pt-4 border-t border-neutral-200">
+                                <div className="flex items-center justify-between mt-auto pt-4 border-t border-neutral-700">
                                     <span className="text-neutral-500 text-sm font-medium">Click to edit</span>
-                                    <div className="w-6 h-6 text-neutral-400 group-hover:text-neutral-600 transition-colors duration-300 group-hover:translate-x-1">
+                                    <div className="w-6 h-6 text-neutral-500 group-hover:text-neutral-300 transition-colors duration-300 group-hover:translate-x-1">
                                         →
                                     </div>
                                 </div>
@@ -161,11 +165,11 @@ const Dashboard = () => {
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
                         <div className="empty-state-icon">
-                            <span className="text-2xl opacity-60">📝</span>
+                            <span className="text-3xl opacity-60">📝</span>
                         </div>
                         <h3 className="empty-state-title">No projects yet</h3>
                         <p className="empty-state-description">
-                            Create your first project to start building amazing things with HTML, CSS, and JavaScript.
+                            Create your first project to start building amazing things with HTML, CSS, and JavaScript in our dark environment.
                         </p>
                         <button
                             onClick={() => document.querySelector('input').focus()}
